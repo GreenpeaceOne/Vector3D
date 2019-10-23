@@ -1,0 +1,3 @@
+/home/victor/CLionProjects/3dvector/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/victor/CLionProjects/3dvector/cmake-build-debug/CMakeFiles/3dvector.dir
+/home/victor/CLionProjects/3dvector/cmake-build-debug/CMakeFiles/edit_cache.dir
