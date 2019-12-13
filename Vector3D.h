@@ -5,13 +5,16 @@
 #include <iostream>
 #include <math.h>
 #include <string>
+#include "Double.h"
 
 using namespace std;
-typedef float f;
+typedef Double f;
 
 #ifndef INC_3DVECTOR_VECTOR3D_H
 #define INC_3DVECTOR_VECTOR3D_H
+class chisla {
 
+};
 class Vector3D {
 private:
     f x_,y_,z_;
@@ -26,18 +29,22 @@ public:
     Vector3D operator*(const Vector3D &vec);
     Vector3D operator*(f num);
 
+
     ~Vector3D();
 
     f operator[] (int i);
-
     f length();
     f getX();
     f getY();
     f getZ();
-    f* GetValue();
+    f* getValue();
 
     f scalar(const Vector3D &vec);
     f mix(const Vector3D &b, const Vector3D &c);
+
+    void setX(f val);
+    void setY(f val);
+    void setZ(f val);
 
     friend ostream& operator<< (ostream& out, const Vector3D& t);
     friend istream& operator>> (istream& in, Vector3D& t);
@@ -54,6 +61,7 @@ Vector3D::Vector3D(f x, f y, f z) {
     x_=x;
     y_=y;
     z_=z;
+
 }
 
 Vector3D &Vector3D ::operator=(const Vector3D &vec) {
@@ -64,11 +72,11 @@ Vector3D &Vector3D ::operator=(const Vector3D &vec) {
 }
 
 Vector3D Vector3D ::operator+(const Vector3D &vec) {
-    x_+=vec.x_;
-    y_+=vec.y_;
-    z_+=vec.z_;
+    f c1 = x_+ vec.x_;
+    f c2 = y_+ vec.y_;
+    f c3 = z_+ vec.z_;
 
-    return *this;
+    return Vector3D(c1, c2, c3);
 }
 
 //Vector3D Vector3D ::operator+=(const Vector3D &vec) {
@@ -80,11 +88,11 @@ Vector3D Vector3D ::operator+(const Vector3D &vec) {
 //}
 
 Vector3D Vector3D ::operator-(const Vector3D &vec) {
-    x_-=vec.x_;
-    y_-=vec.y_;
-    z_-=vec.z_;
+    f c1 = x_- vec.x_;
+    f c2 = y_- vec.y_;
+    f c3 = z_- vec.z_;
 
-    return *this;
+    return Vector3D(c1, c2, c3);
 }
 
 //Vector3D Vector3D ::operator-=(const Vector3D &vec) {
@@ -95,13 +103,13 @@ Vector3D Vector3D ::operator-(const Vector3D &vec) {
 //    return *this;
 //}
 
-Vector3D Vector3D ::operator*(const Vector3D &vec) {
-    f c1=y_*vec.z_ - z_ * vec.y_;
-    f c2 = - (x_*vec.z_ - z_*vec.x_);
-    f c3 = x_*vec.y_ - y_*vec.x_;
-
-    return Vector3D(c1, c2, c3);
-}
+//Vector3D Vector3D ::operator*(const Vector3D &vec) {
+//    f c1=y_*vec.z_ - z_ * vec.y_;
+//    f c2 = - (x_*vec.z_ - z_*vec.x_);
+//    f c3 = x_*vec.y_ - y_*vec.x_;
+//
+//    return Vector3D(c1, c2, c3);
+//}
 
 Vector3D Vector3D ::operator*(f num) {
     f c1 = x_*num;
@@ -125,10 +133,22 @@ f Vector3D ::operator[](int i) {
     }
 }
 
-f Vector3D::length() {
-    f length = sqrt(x_*x_ + y_*y_ + z_*z_);
+//f Vector3D::length() {
+//    f length = sqrt(x_*x_ + y_*y_ + z_*z_);
+//
+//    return length;
+//}
 
-    return length;
+void Vector3D::setX(f val) {
+    x_=val;
+}
+
+void Vector3D::setY(f val) {
+    y_-val;
+}
+
+void Vector3D::setZ(f val) {
+    z_=val;
 }
 
 f Vector3D ::getX() {
@@ -143,8 +163,8 @@ f Vector3D ::getZ() {
     return z_;
 }
 
-f* Vector3D::GetValue() {
-    f *a = new float(3);
+f* Vector3D::getValue() {
+    f *a = new f(3);
     a[0]=x_;
     a[1]=y_;
     a[2]=z_;
@@ -152,17 +172,17 @@ f* Vector3D::GetValue() {
     return a;
 }
 
-f Vector3D::scalar(const Vector3D &vec){
-    f sum;
-
-    x_*=vec.x_;
-    y_*=vec.y_;
-    z_*=vec.z_;
-
-    sum = x_+y_+z_;
-
-    return sum;
-}
+//f Vector3D::scalar(const Vector3D &vec){
+//    f sum;
+//
+//    x_*=vec.x_;
+//    y_*=vec.y_;
+//    z_*=vec.z_;
+//
+//    sum = x_+y_+z_;
+//
+//    return sum;
+//}
 
 f Vector3D::mix(const Vector3D &b, const Vector3D &c) {
      f sum = x_*b.y_*c.z_

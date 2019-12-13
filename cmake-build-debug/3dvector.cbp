@@ -84,7 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/victor/CLionProjects/3dvector/Double.h">
+			<Option target="3dvector"/>
+		</Unit>
 		<Unit filename="/home/victor/CLionProjects/3dvector/Vector3D.h">
+			<Option target="3dvector"/>
+		</Unit>
+		<Unit filename="/home/victor/CLionProjects/3dvector/for_tests.h">
 			<Option target="3dvector"/>
 		</Unit>
 		<Unit filename="/home/victor/CLionProjects/3dvector/main.cpp">

@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/victor/CLionProjects/3dvector/Double.h
+iostream
+-
+
 /home/victor/CLionProjects/3dvector/Vector3D.h
 iostream
 -
@@ -13,6 +17,8 @@ math.h
 -
 string
 -
+Double.h
+/home/victor/CLionProjects/3dvector/Double.h
 
 /home/victor/CLionProjects/3dvector/main.cpp
 iostream
